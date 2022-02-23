@@ -25,8 +25,7 @@ public class HttpServer {
 
             PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
             BufferedReader in = new BufferedReader(
-                    new InputStreamReader(
-                            clientSocket.getInputStream()));
+                    new InputStreamReader(clientSocket.getInputStream()));
             String inputLine, outputLine = "";
             boolean primeraLinea = true;
             String file = "";
