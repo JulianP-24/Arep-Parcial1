@@ -68,6 +68,20 @@ public class HttpServer {
                         + "prueba2"
                         + "</body>"
                         + "</html>";}
+            else{
+                outputLine = "HTTP/1.1 200 OK\r\n"
+                        + "Content-Type text/html\r\n"
+                        + "\r\n"
+                        + "<!DOCTYPE html>"
+                        + "<html>"
+                        + "<head>"
+                        + "<meta charset=\"UTF-8\">"
+                        + "<title>Title of the document</title>\n"
+                        + "</head>"
+                        + "<body>"
+                        + "prueba3"
+                        + "</body>"
+                        + "</html>";}
             out.println(outputLine);
             
 
