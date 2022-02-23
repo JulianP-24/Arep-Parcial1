@@ -3,6 +3,7 @@ package edu.escuelaing.parcial;
 import java.net.*;
 import java.io.*;
 public class HttpServer {
+
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = null;
         try {
@@ -40,7 +41,10 @@ public class HttpServer {
                     break;
                 }
             }
+            getClima climita = new getClima();
+            String json= climita.getClimaCiudadAPI("Bogota");
             if (file.startsWith("/clima/")){
+
                 outputLine = "HTTP/1.1 200 OK\r\n"
                         + "Content-Type text/html\r\n"
                         + "\r\n"
@@ -50,12 +54,13 @@ public class HttpServer {
                         + "<meta charset=\"UTF-8\">"
                         + "<title>Title of the document</title>\n"
                         + "</head>"
+                        //+ "<script src=\"index.js\"</script>\n"
                         + "<body>"
                         + "Prueba1"
                         + "<h4>Ingrese la ciudad:</h4>\n"
                         + "<input type=\"text\" id=\"city\" >\n"
                         + "<br>\n"
-                        + "<button id=\"submit\"type=\"button\">Buscar</button>\n"
+                        +"<button type=\"button\" onclick=\"res.connexion($('#lugar').val())\">\n"
                         + "</body>"
                         + "<script>\n"
                         + "document.addEventListener(\"DOMContentLoaded\", () => {\n"
@@ -78,11 +83,14 @@ public class HttpServer {
                         + "</head>"
                         + "<body>"
                         + "prueba2"
+                        + "<label> El resultado es: </label>"
+                        + "<span id=\"Resultado\"</span>\n"
+                        + "<p>" +json+ "</p>"
                         + "</body>"
                         + "</html>";}
             else{
                 outputLine = "HTTP/1.1 200 OK\r\n"
-                        + "Content-Type text/html\r\n"
+                        + "Content-Type \"application/json\"\r\n"
                         + "\r\n"
                         + "<!DOCTYPE html>"
                         + "<html>"
@@ -95,7 +103,6 @@ public class HttpServer {
                         + "</body>"
                         + "</html>";}
             out.println(outputLine);
-            
 
             out.close();
             in.close();
